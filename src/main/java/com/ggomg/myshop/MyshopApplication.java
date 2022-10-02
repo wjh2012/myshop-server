@@ -7,6 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MyshopApplication {
 
 	public static void main(String[] args) {
+		Hello hello = new Hello();
+		hello.setData("hello! world");
+		String data = hello.getData();
+		System.out.println("data = " + data);
+
 		SpringApplication.run(MyshopApplication.class, args);
 	}
 
