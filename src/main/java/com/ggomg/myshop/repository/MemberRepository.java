@@ -1,5 +1,6 @@
-package com.ggomg.myshop.member;
+package com.ggomg.myshop.repository;
 
+import com.ggomg.myshop.domain.Member;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -19,4 +20,6 @@ public class MemberRepository {
     public Member find(Long id) {
         return em.find(Member.class, id);
     }
+
 }
+
