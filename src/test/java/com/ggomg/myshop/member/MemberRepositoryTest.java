@@ -23,7 +23,7 @@ class MemberRepositoryTest {
         member.setName("ggomg");
         Long savedId = memberRepository.save(member);
 
-        Member findMember = memberRepository.find(savedId);
+        Member findMember = memberRepository.findOne(savedId);
         assertEquals(member.getId(), findMember.getId());
     }
 
