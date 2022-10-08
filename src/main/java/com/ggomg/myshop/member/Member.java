@@ -19,11 +19,13 @@ public class Member {
     @Column(name="member_id")
     private Long id;
 
+    // 단일속성
     private String name;
     private String email;
     private Date birth;
     private MemberGrade memberGrade;
 
+    // 연관속성
     @OneToMany(mappedBy = "member")
     private List<Post> posts = new ArrayList<>();
 
