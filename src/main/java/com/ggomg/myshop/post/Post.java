@@ -1,5 +1,6 @@
-package com.ggomg.myshop.domain;
+package com.ggomg.myshop.post;
 
+import com.ggomg.myshop.member.Member;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -16,6 +17,10 @@ public class Post {
     @GeneratedValue
     private Long Id;
 
+    private String title;
+    private String contents;
+    private String group;
+
     @ManyToOne
     @JoinColumn(name="member_id")
     @CreatedBy
@@ -26,7 +31,5 @@ public class Post {
 
     @LastModifiedDate
     private LocalDateTime modifiedDate;
-
-    private String contents;
 
 }

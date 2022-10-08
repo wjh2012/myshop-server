@@ -1,7 +1,8 @@
-package com.ggomg.myshop.domain;
+package com.ggomg.myshop.group;
 
+import com.ggomg.myshop.member.MemberGrade;
+import com.ggomg.myshop.post.Post;
 import lombok.Getter;
-import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -11,27 +12,17 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Setter
 @Getter
-public class Member {
+public class Group {
 
     @Id
     @GeneratedValue
-    @Column(name="member_id")
+    @Column(name="group_id")
     private Long id;
 
     private String name;
 
+    // meta
     @CreatedDate
     private LocalDateTime createdDate;
-
-    private String email;
-
-    private Date birth;
-
-    @OneToMany(mappedBy = "member")
-    private List<Post> posts = new ArrayList<>();
-
-
 }
-

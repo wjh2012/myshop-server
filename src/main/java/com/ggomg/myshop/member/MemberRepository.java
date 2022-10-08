@@ -1,6 +1,6 @@
-package com.ggomg.myshop.repository;
+package com.ggomg.myshop.member;
 
-import com.ggomg.myshop.domain.Member;
+import com.ggomg.myshop.member.Member;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
