@@ -2,20 +2,18 @@ package com.ggomg.myshop.reply;
 
 import lombok.Getter;
 
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 
-@Embeddable
+@Entity
 @Getter
 public class ReplyContent {
+
+    @Id
+    @GeneratedValue
+    @Column(name="replyContent_id")
+    private Long Id;
 
     private String title;
     private String content;
 
-    protected ReplyContent(){
-    }
-
-    public ReplyContent(String title, String content) {
-        this.title = title;
-        this.content = content;
-    }
 }

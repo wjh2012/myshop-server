@@ -13,13 +13,17 @@ import java.time.LocalDateTime;
 @Getter
 public class Reply {
 
+    // meta
     @Id
     @GeneratedValue
-    @Column(name = "comment_id")
+    @Column(name = "reply_id")
     private Long Id;
 
+    @CreatedDate
+    private LocalDateTime createdDate;
+
+
     // 단일속성
-    private ReplyContent replyContent;
     private int good;
     private int bad;
 
@@ -32,8 +36,8 @@ public class Reply {
     @ManyToOne
     private Post post;
 
-    // meta
-    @CreatedDate
-    private LocalDateTime createdDate;
+    @OneToOne
+    private ReplyContent replyContent;
+
 
 }

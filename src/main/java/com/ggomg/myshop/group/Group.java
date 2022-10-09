@@ -16,10 +16,14 @@ import java.util.List;
 @Getter
 public class Group {
 
+    // meta
     @Id
     @GeneratedValue
     @Column(name="group_id")
     private Long id;
+
+    @CreatedDate
+    private LocalDateTime createdDate;
 
     // 단일속성
     private String name;
@@ -30,7 +34,5 @@ public class Group {
     @OneToMany
     private List<Post> posts = new ArrayList<>();
 
-    // meta
-    @CreatedDate
-    private LocalDateTime createdDate;
+
 }

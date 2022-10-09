@@ -14,11 +14,14 @@ import java.util.List;
 @Entity
 @Getter
 public class Member {
-
+    // meta
     @Id
     @GeneratedValue
     @Column(name="member_id")
     private Long id;
+
+    @CreatedDate
+    private LocalDateTime createdDate;
 
     // 단일속성
     private String name;
@@ -33,9 +36,7 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Reply> replies = new ArrayList<>();
 
-    // meta
-    @CreatedDate
-    private LocalDateTime createdDate;
+
 
 }
 

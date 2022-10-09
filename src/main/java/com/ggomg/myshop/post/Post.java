@@ -17,15 +17,20 @@ import java.util.List;
 @Getter
 public class Post {
 
+    // meta
     @Id
     @GeneratedValue
     @Column(name="post_id")
     private Long Id;
 
+    @CreatedDate
+    private LocalDateTime createdDate;
+
+    @LastModifiedDate
+    private LocalDateTime modifiedDate;
+
     // 단일속성
     private Category category;
-    private PostContent postContent;
-
     private int good;
     private int bad;
 
@@ -41,11 +46,8 @@ public class Post {
     @ManyToOne
     private Group group;
 
-    // meta
-    @CreatedDate
-    private LocalDateTime createdDate;
+    @OneToOne
+    private PostContent postContent;
 
-    @LastModifiedDate
-    private LocalDateTime modifiedDate;
 
 }
