@@ -1,6 +1,6 @@
 package com.ggomg.myshop.post;
 
-import com.ggomg.myshop.comment.Comment;
+import com.ggomg.myshop.reply.Reply;
 import com.ggomg.myshop.group.Group;
 import com.ggomg.myshop.member.Member;
 import lombok.Getter;
@@ -19,12 +19,12 @@ public class Post {
 
     @Id
     @GeneratedValue
+    @Column(name="post_id")
     private Long Id;
 
     // 단일속성
-    private String title;
-    private String contents;
     private Category category;
+    private PostContent postContent;
 
     private int good;
     private int bad;
@@ -36,7 +36,7 @@ public class Post {
     private Member member;
 
     @OneToMany
-    private List<Comment> comments = new ArrayList<>();
+    private List<Reply> replies = new ArrayList<>();
 
     @ManyToOne
     private Group group;

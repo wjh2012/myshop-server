@@ -1,4 +1,4 @@
-package com.ggomg.myshop.comment;
+package com.ggomg.myshop.reply;
 
 import com.ggomg.myshop.member.Member;
 import com.ggomg.myshop.post.Post;
@@ -8,18 +8,18 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Getter
-public class Comment {
+public class Reply {
 
     @Id
     @GeneratedValue
+    @Column(name = "comment_id")
     private Long Id;
 
     // 단일속성
-    private String contents;
+    private ReplyContent replyContent;
     private int good;
     private int bad;
 
@@ -30,11 +30,10 @@ public class Comment {
     private Member writer;
 
     @ManyToOne
-    private Post owner;
+    private Post post;
 
     // meta
     @CreatedDate
     private LocalDateTime createdDate;
-
 
 }

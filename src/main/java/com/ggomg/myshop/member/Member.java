@@ -1,6 +1,7 @@
 package com.ggomg.myshop.member;
 
 import com.ggomg.myshop.post.Post;
+import com.ggomg.myshop.reply.Reply;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -28,6 +29,9 @@ public class Member {
     // 연관속성
     @OneToMany(mappedBy = "member")
     private List<Post> posts = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member")
+    private List<Reply> replies = new ArrayList<>();
 
     // meta
     @CreatedDate
