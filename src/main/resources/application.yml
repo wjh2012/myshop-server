@@ -10,8 +10,8 @@ spring:
       ddl-auto: create
     properties:
       hibernate:
-      format_sql: true
-  #        show_sql: true # sout에 출력
+        format_sql: true
+    show_sql: false # sout에 출력
 
 logging.level:
   org.hibernate.SQL: debug # logger에 출력

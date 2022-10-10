@@ -1,7 +1,7 @@
 package com.ggomg.myshop.post;
 
 import com.ggomg.myshop.reply.Reply;
-import com.ggomg.myshop.group.Group;
+import com.ggomg.myshop.board.Board;
 import com.ggomg.myshop.member.Member;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedBy;
@@ -40,13 +40,14 @@ public class Post {
     @CreatedBy
     private Member member;
 
-    @OneToMany
+    @OneToMany(mappedBy = "post")
     private List<Reply> replies = new ArrayList<>();
 
     @ManyToOne
-    private Group group;
+    @JoinColumn(name = "board_id")
+    private Board board;
 
-    @OneToOne
+    @Embedded
     private PostContent postContent;
 
 

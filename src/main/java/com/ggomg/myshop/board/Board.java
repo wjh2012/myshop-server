@@ -1,25 +1,24 @@
-package com.ggomg.myshop.group;
+package com.ggomg.myshop.board;
 
 import com.ggomg.myshop.member.Member;
-import com.ggomg.myshop.member.MemberGrade;
 import com.ggomg.myshop.post.Post;
 import lombok.Getter;
+import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
 @Getter
-public class Group {
+public class Board {
 
     // meta
     @Id
     @GeneratedValue
-    @Column(name="group_id")
+    @Column(name="board_id")
     private Long id;
 
     @CreatedDate
@@ -30,8 +29,11 @@ public class Group {
 
     // 연관속성
     @ManyToOne
-    private Member owner;
-    @OneToMany
+    @JoinColumn(name="member_id")
+    @CreatedBy
+    private Member member;
+
+    @OneToMany(mappedBy = "board")
     private List<Post> posts = new ArrayList<>();
 
 

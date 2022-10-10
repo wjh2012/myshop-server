@@ -8,6 +8,8 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -31,13 +33,23 @@ public class Reply {
     @ManyToOne
     @JoinColumn(name="member_id")
     @CreatedBy
-    private Member writer;
+    private Member member;
 
     @ManyToOne
+    @JoinColumn(name="post_id")
     private Post post;
 
-    @OneToOne
+    @Embedded
     private ReplyContent replyContent;
+
+    // 대댓글
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
+    private Reply parent;
+
+    @OneToMany(mappedBy = "parent")
+    private List<Reply> child = new ArrayList<>();
+
 
 
 }
