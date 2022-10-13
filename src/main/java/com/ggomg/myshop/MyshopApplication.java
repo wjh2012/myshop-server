@@ -8,7 +8,7 @@ public class MyshopApplication {
 
 	public static void main(String[] args) {
 		Hello hello = new Hello();
-		hello.setData("hello! world");
+		hello.setData("hello! spring!");
 		String data = hello.getData();
 		System.out.println("data = " + data);
 

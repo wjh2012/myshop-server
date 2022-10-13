@@ -1,37 +1,15 @@
 package com.ggomg.myshop.member;
 
-import com.ggomg.myshop.member.Member;
-import org.springframework.stereotype.Repository;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
-@Repository
-public class MemberRepository {
+public interface MemberRepository {
 
-    @PersistenceContext
-    EntityManager em;
+    void create(Member member);
 
-    public Long save(Member member) {
-        em.persist(member);
-        return member.getId();
-    }
+    Member read(Long id);
 
-    public Member findOne(Long id) {
-        return em.find(Member.class, id);
-    }
+    List<Member> findByName(String name);
 
-    public List<Member> findAll(Long id) {
-        return em.createQuery("select m from Member m", Member.class)
-                .getResultList();
-    }
-
-    public List<Member> findByName(String name) {
-        return em.createQuery("select m from Member m where m.name =:name", Member.class)
-                .setParameter("name", name)
-                .getResultList();
-    }
+    List<Member> findAll();
 
 }
-

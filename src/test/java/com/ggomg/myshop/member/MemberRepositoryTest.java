@@ -11,16 +11,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class MemberRepositoryTest {
 
     @Autowired
-    MemberRepository memberRepository;
+    MemberRepositoryImpl memberRepositoryImpl;
 
     @Test
     @Transactional
     public void testMember(){
         Member member = new Member();
-        member.setName("ggomg");
-        Long savedId = memberRepository.save(member);
+        Long savedId = memberRepositoryImpl.save(member);
 
-        Member findMember = memberRepository.findOne(savedId);
+        Member findMember = memberRepositoryImpl.findOne(savedId);
         assertEquals(member.getId(), findMember.getId());
     }
 
