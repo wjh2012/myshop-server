@@ -40,7 +40,9 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Board> boards = new ArrayList<>();
 
-
+    public static Member createMember(MemberDto memberDto) {
+        Member member = new Member();
+    }
 
 }
 
