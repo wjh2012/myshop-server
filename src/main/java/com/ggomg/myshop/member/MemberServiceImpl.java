@@ -21,6 +21,7 @@ public class MemberServiceImpl implements MemberService {
     }
 
     private void validateDuplicateMemberName(String name) {
+
         List<Member> foundMember = memberRepository.findByName(name);
         if (!foundMember.isEmpty()){
             throw new IllegalStateException("이미 존재하는 닉네임입니다.");

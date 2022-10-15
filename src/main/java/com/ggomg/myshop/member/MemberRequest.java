@@ -2,13 +2,11 @@ package com.ggomg.myshop.member;
 
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
-public class MemberDto {
+public class MemberRequest {
     private String name;
     private String email;
-    private Date birth;
-
-
+    private LocalDate birth;
 }

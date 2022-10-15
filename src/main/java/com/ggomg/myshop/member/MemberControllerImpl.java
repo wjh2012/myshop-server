@@ -1,28 +1,22 @@
 package com.ggomg.myshop.member;
 
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Date;
 
 @RestController
 @RequiredArgsConstructor
-public class MemberControllerImpl implements MemberController{
+public class MemberControllerImpl {
 
     private final MemberService memberService;
 
     @PostMapping("/member")
-    public Long saveMember(CreateMemberRequest request) {
+    public Long saveMember(@RequestBody MemberRequest request) {
+        Member member = Member.createMember(request);
 
-        Member member = new Member();
+        memberService.join(member);
+        return member.getId();
     }
 
-    @Data
-    static class CreateMemberRequest{
-        private String name;
-        private String email;
-        private Date birth;
-    }
 }
