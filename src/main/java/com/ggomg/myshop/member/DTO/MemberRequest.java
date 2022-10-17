@@ -1,4 +1,4 @@
-package com.ggomg.myshop.member;
+package com.ggomg.myshop.member.DTO;
 
 import lombok.Data;
 

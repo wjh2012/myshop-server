@@ -1,6 +1,7 @@
 package com.ggomg.myshop.member;
 
 import com.ggomg.myshop.board.Board;
+import com.ggomg.myshop.member.DTO.MemberRequest;
 import com.ggomg.myshop.post.Post;
 import com.ggomg.myshop.reply.Reply;
 import lombok.Getter;
