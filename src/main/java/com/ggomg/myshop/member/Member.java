@@ -10,6 +10,7 @@ import org.springframework.data.annotation.CreatedDate;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +54,7 @@ public class Member {
         member.email = memberRequest.getEmail();
         member.birth = memberRequest.getBirth();
         member.memberGrade = MemberGrade.NEWB;
-        member.createdDate = LocalDateTime.now();
+        member.createdDate = LocalDateTime.now().withNano(0);
 
         return member;
     }

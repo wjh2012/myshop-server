@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class MemberListResponse {
+    private Long id;
     private String name;
     private String email;
     private LocalDate birth;
@@ -16,6 +17,7 @@ public class MemberListResponse {
     private LocalDateTime createdDate;
 
     public MemberListResponse(Member member){
+        this.id = member.getId();
         this.name = member.getName();
         this.email = member.getEmail();
         this.birth = member.getBirth();
