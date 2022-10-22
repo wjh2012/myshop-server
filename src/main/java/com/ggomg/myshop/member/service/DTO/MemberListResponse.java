@@ -1,13 +1,18 @@
-package com.ggomg.myshop.member.DTO;
+package com.ggomg.myshop.member.service.DTO;
 
-import com.ggomg.myshop.member.Member;
-import com.ggomg.myshop.member.MemberGrade;
+import com.ggomg.myshop.member.entity.Member;
+import com.ggomg.myshop.member.entity.MemberGrade;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class MemberListResponse {
     private Long id;
     private String name;

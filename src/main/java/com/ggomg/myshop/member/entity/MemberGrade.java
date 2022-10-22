@@ -1,4 +1,4 @@
-package com.ggomg.myshop.member;
+package com.ggomg.myshop.member.entity;
 
 public enum MemberGrade {
 

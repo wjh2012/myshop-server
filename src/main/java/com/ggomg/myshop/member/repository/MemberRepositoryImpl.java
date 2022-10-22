@@ -1,5 +1,7 @@
-package com.ggomg.myshop.member;
+package com.ggomg.myshop.member.repository;
 
+import com.ggomg.myshop.member.entity.Member;
+import com.ggomg.myshop.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

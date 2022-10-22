@@ -1,21 +1,23 @@
-package com.ggomg.myshop.member;
+package com.ggomg.myshop.member.entity;
 
 import com.ggomg.myshop.board.Board;
-import com.ggomg.myshop.member.DTO.MemberRequest;
 import com.ggomg.myshop.post.Post;
 import com.ggomg.myshop.reply.Reply;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
     // meta
     @Id
@@ -25,10 +27,9 @@ public class Member {
 
     @CreatedDate
     private LocalDateTime createdDate;
-    // 단일속성
+
     private String name;
     private String email;
-
     private LocalDate birth;
 
     @Enumerated(EnumType.STRING)
@@ -44,19 +45,12 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Board> boards = new ArrayList<>();
 
-    protected Member() {
-    }
-
-    public static Member createMember(MemberRequest memberRequest) {
-        Member member = new Member();
-
-        member.name = memberRequest.getName();
-        member.email = memberRequest.getEmail();
-        member.birth = memberRequest.getBirth();
-        member.memberGrade = MemberGrade.NEWB;
-        member.createdDate = LocalDateTime.now().withNano(0);
-
-        return member;
+    @Builder
+    public Member(String name, String email, LocalDate birth, MemberGrade memberGrade){
+        this.name = name;
+        this.email = email;
+        this.birth = birth;
+        this.memberGrade = memberGrade;
     }
 
 }
