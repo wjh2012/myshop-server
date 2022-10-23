@@ -3,8 +3,8 @@ spring boot
 JPA
 
 # ISSUE
+1. 멤버 인증 방법 - JWT가 아닌 다른 인증 방법
 성능을 고려한 member와 post의 결합도
-JWT가 아닌 다른 인증 방법
 
 # 1. 기획
 - [x] 엔티티 설계
@@ -19,23 +19,23 @@ JWT가 아닌 다른 인증 방법
 - [x] controller
 - [x] front
 
-## 그룹
+## 게시글
 - [x] entity
 - [x] repository
 - [x] service
-- [] controller
+- [ ] controller
 
-## 포스트
-- [] entity
-- [] repository
-- [] service
-- [] controller
+## 그룹
+- [ ] entity
+- [ ] repository
+- [ ] service
+- [ ] controller
 
 ## 댓글
-- [] entity
-- [] repository
-- [] service
-- [] controller
+- [ ] entity
+- [ ] repository
+- [ ] service
+- [ ] controller
 
 ## 인증
 
