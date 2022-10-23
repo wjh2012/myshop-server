@@ -1,6 +1,7 @@
 package com.ggomg.myshop;
 
-import com.ggomg.myshop.member.controller.DTO.MemberCreateRequest;
+import com.ggomg.myshop.member.controller.DTO.MemberCreateRequestToController;
+import com.ggomg.myshop.member.service.DTO.MemberCreateRequestToService;
 import com.ggomg.myshop.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -29,17 +30,17 @@ public class InitDb {
         private final MemberService memberService;
 
         private void dbInit1(){
-            memberService.join(MemberCreateRequest.of("memberA", "emailA", "1999-09-09"));
-            memberService.join(MemberCreateRequest.of("memberB", "emailB", "1969-09-04"));
-            memberService.join(MemberCreateRequest.of("memberC", "emailC", "1989-06-09"));
-            memberService.join(MemberCreateRequest.of("memberD", "emailD", "1997-12-09"));
-            memberService.join(MemberCreateRequest.of("memberE", "emailE", "1996-04-07"));
-            memberService.join(MemberCreateRequest.of("memberF", "emailF", "1996-09-07"));
-            memberService.join(MemberCreateRequest.of("memberG", "emailG", "1996-11-07"));
-            memberService.join(MemberCreateRequest.of("memberH", "emailH", "1946-05-07"));
-            memberService.join(MemberCreateRequest.of("memberI", "emailI", "1996-01-07"));
-            memberService.join(MemberCreateRequest.of("memberJ", "emailJ", "1996-03-07"));
-            memberService.join(MemberCreateRequest.of("memberK", "emailK", "1996-02-07"));
+            memberService.join(MemberCreateRequestToService.of(new MemberCreateRequestToController("memberA", "emailA", "1999-09-09")));
+            memberService.join(MemberCreateRequestToService.of(new MemberCreateRequestToController("memberB", "emailB", "1969-09-04")));
+            memberService.join(MemberCreateRequestToService.of(new MemberCreateRequestToController("memberC", "emailC", "1989-06-09")));
+            memberService.join(MemberCreateRequestToService.of(new MemberCreateRequestToController("memberD", "emailD", "1997-12-09")));
+            memberService.join(MemberCreateRequestToService.of(new MemberCreateRequestToController("memberE", "emailE", "1996-04-07")));
+            memberService.join(MemberCreateRequestToService.of(new MemberCreateRequestToController("memberF", "emailF", "1996-09-07")));
+            memberService.join(MemberCreateRequestToService.of(new MemberCreateRequestToController("memberG", "emailG", "1996-11-07")));
+            memberService.join(MemberCreateRequestToService.of(new MemberCreateRequestToController("memberH", "emailH", "1946-05-07")));
+            memberService.join(MemberCreateRequestToService.of(new MemberCreateRequestToController("memberI", "emailI", "1996-01-07")));
+            memberService.join(MemberCreateRequestToService.of(new MemberCreateRequestToController("memberJ", "emailJ", "1996-03-07")));
+            memberService.join(MemberCreateRequestToService.of(new MemberCreateRequestToController("memberK", "emailK", "1996-02-07")));
         }
     }
 

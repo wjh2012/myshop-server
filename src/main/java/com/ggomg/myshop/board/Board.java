@@ -1,7 +1,7 @@
 package com.ggomg.myshop.board;
 
 import com.ggomg.myshop.member.entity.Member;
-import com.ggomg.myshop.post.Post;
+import com.ggomg.myshop.post.entity.Post;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;

@@ -1,10 +1,10 @@
 package com.ggomg.myshop.member.service;
 
-import com.ggomg.myshop.member.controller.DTO.MemberCreateRequest;
-import com.ggomg.myshop.member.controller.DTO.MemberCreateResponse;
+import com.ggomg.myshop.member.controller.DTO.MemberCreateRequestToController;
 import com.ggomg.myshop.member.entity.Member;
 import com.ggomg.myshop.member.entity.MemberGrade;
 import com.ggomg.myshop.member.repository.MemberRepository;
+import com.ggomg.myshop.member.service.DTO.MemberCreateRequestToService;
 import com.ggomg.myshop.member.service.DTO.MemberListResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,7 @@ public class MemberServiceImpl implements MemberService {
 
     @Transactional(readOnly = false)
     @Override
-    public Long join(MemberCreateRequest request) {
+    public Long join(MemberCreateRequestToService request) {
 
         validateDuplicateMemberName(request.getName());
 

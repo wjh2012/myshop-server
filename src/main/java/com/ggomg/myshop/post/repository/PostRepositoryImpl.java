@@ -1,5 +1,7 @@
-package com.ggomg.myshop.post;
+package com.ggomg.myshop.post.repository;
 
+import com.ggomg.myshop.post.entity.Post;
+import com.ggomg.myshop.post.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -8,7 +10,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class PostRepositoryImpl implements PostRepository{
+public class PostRepositoryImpl implements PostRepository {
 
     private final EntityManager em;
 

@@ -1,4 +1,4 @@
-package com.ggomg.myshop.post;
+package com.ggomg.myshop.post.entity;
 
 public enum Category {
 

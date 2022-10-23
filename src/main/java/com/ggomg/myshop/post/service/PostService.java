@@ -1,4 +1,6 @@
-package com.ggomg.myshop.post;
+package com.ggomg.myshop.post.service;
+
+import com.ggomg.myshop.post.entity.Post;
 
 import java.util.List;
 

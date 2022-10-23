@@ -1,4 +1,4 @@
-package com.ggomg.myshop.post;
+package com.ggomg.myshop.post.entity;
 
 import com.ggomg.myshop.reply.Reply;
 import com.ggomg.myshop.board.Board;
@@ -52,7 +52,5 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "board_id")
     private Board board;
-
-
 
 }
