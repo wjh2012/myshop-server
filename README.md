@@ -9,6 +9,7 @@
 - [x] 엔티티 설계
 - [x] 엔티티 관계 설정
 - [x] 다이어그램 작성
+![classDiagram](https://user-images.githubusercontent.com/57653698/197394730-ba3271f5-f4cc-4064-9e75-2948a9e64d76.jpg)
 
 # 2. 구현
 ## 멤버
