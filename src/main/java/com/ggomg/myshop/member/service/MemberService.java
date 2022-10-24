@@ -10,4 +10,5 @@ public interface MemberService {
     Long join(MemberCreateRequestToService memberCreateRequestToService);
 
     List<MemberListResponse> findMembers();
+
 }

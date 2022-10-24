@@ -41,7 +41,7 @@ public class Post {
     private int bad;
 
     // 연관속성
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="member_id")
     @CreatedBy
     private Member member;
@@ -49,7 +49,7 @@ public class Post {
     @OneToMany(mappedBy = "post")
     private List<Reply> replies = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_id")
     private Board board;
 

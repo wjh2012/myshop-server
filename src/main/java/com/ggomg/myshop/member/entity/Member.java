@@ -31,7 +31,10 @@ public class Member {
     private LocalDateTime createdDate;
 
     private String name;
+
     private String email;
+    private String password;
+
     private LocalDate birth;
 
     @Enumerated(EnumType.STRING)
@@ -48,9 +51,10 @@ public class Member {
     private List<Board> boards = new ArrayList<>();
 
     @Builder
-    public Member(String name, String email, LocalDate birth, MemberGrade memberGrade){
+    public Member(String name, String email,String password, LocalDate birth,MemberGrade memberGrade){
         this.name = name;
         this.email = email;
+        this.password = password;
         this.birth = birth;
         this.memberGrade = memberGrade;
     }

@@ -1,7 +1,9 @@
 package com.ggomg.myshop.member.repository;
 
 import com.ggomg.myshop.member.entity.Member;
+import com.ggomg.myshop.member.entity.QMember;
 import com.ggomg.myshop.member.repository.MemberRepository;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -35,6 +37,20 @@ public class MemberRepositoryImpl implements MemberRepository {
     public List<Member> findAll() {
         return em.createQuery("select m from Member m", Member.class)
                 .getResultList();
+    }
+
+    @Override
+    public List<Member> findByEmailAndPassword(String email, String password) {
+        QMember member = QMember.member;
+
+        JPAQueryFactory query = new JPAQueryFactory(em);
+        return query
+                .select(member)
+                .from(member)
+                .where(
+                        (member.email.eq(email))
+                                .and(member.password.eq(password)))
+                .fetch();
     }
 
 

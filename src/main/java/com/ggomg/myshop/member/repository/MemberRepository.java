@@ -14,4 +14,6 @@ public interface MemberRepository {
 
     List<Member> findAll();
 
+    List<Member> findByEmailAndPassword(String email, String password);
+
 }

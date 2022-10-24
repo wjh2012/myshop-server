@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,7 +31,8 @@ public class MemberServiceImpl implements MemberService {
         Member member = Member.builder()
                 .name(request.getName())
                 .email(request.getEmail())
-                .birth((request.getBirth()))
+                .password(request.getPassword())
+                .birth(LocalDate.parse(request.getBirth(), DateTimeFormatter.ISO_LOCAL_DATE))
                 .memberGrade(MemberGrade.NEWB)
                         .build();
 
@@ -55,6 +58,14 @@ public class MemberServiceImpl implements MemberService {
                 .collect((Collectors.toList()));
 
         return collect;
+    }
+
+    private void validateLoginMember(String email, String password){
+
+        List<Member> Result = memberRepository.findByEmailAndPassword(email, password);
+        if (!Result.isEmpty()){
+            throw new IllegalStateException("없는 회원입니다.");
+        }
     }
 
 }
