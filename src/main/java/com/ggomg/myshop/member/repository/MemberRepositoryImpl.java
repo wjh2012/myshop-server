@@ -45,13 +45,11 @@ public class MemberRepositoryImpl implements MemberRepository {
 
         JPAQueryFactory query = new JPAQueryFactory(em);
         return query
-                .select(member)
-                .from(member)
+                .selectFrom(member)
                 .where(
-                        (member.email.eq(email))
-                                .and(member.password.eq(password)))
+                        member.email.eq(email),
+                        member.password.eq(password))
                 .fetch();
     }
-
 
 }

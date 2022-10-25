@@ -6,6 +6,7 @@ import com.ggomg.myshop.member.entity.MemberGrade;
 import com.ggomg.myshop.member.repository.MemberRepository;
 import com.ggomg.myshop.member.service.DTO.MemberCreateRequestToService;
 import com.ggomg.myshop.member.service.DTO.MemberListResponse;
+import com.ggomg.myshop.member.service.DTO.MemberLoginRequestToService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,12 +61,19 @@ public class MemberServiceImpl implements MemberService {
         return collect;
     }
 
-    private void validateLoginMember(String email, String password){
+    @Override
+    public Long login(MemberLoginRequestToService request) {
+        Member member = validateLoginMember(request.getEmail(), request.getPassword()).get(0);
+        return member.getId();
+    }
 
+
+    private List<Member> validateLoginMember(String email, String password){
         List<Member> Result = memberRepository.findByEmailAndPassword(email, password);
-        if (!Result.isEmpty()){
+        if (Result.isEmpty()){
             throw new IllegalStateException("없는 회원입니다.");
         }
+        return Result;
     }
 
 }

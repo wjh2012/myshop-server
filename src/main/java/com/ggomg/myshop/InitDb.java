@@ -26,21 +26,20 @@ public class InitDb {
     @Transactional
     static class InitService{
 
-        private final EntityManager em;
         private final MemberService memberService;
 
         private void dbInit1(){
-            memberService.join(MemberCreateRequestToService.of(new MemberCreateRequestToController("memberA", "emailA", "1999-09-09")));
-            memberService.join(MemberCreateRequestToService.of(new MemberCreateRequestToController("memberB", "emailB", "1969-09-04")));
-            memberService.join(MemberCreateRequestToService.of(new MemberCreateRequestToController("memberC", "emailC", "1989-06-09")));
-            memberService.join(MemberCreateRequestToService.of(new MemberCreateRequestToController("memberD", "emailD", "1997-12-09")));
-            memberService.join(MemberCreateRequestToService.of(new MemberCreateRequestToController("memberE", "emailE", "1996-04-07")));
-            memberService.join(MemberCreateRequestToService.of(new MemberCreateRequestToController("memberF", "emailF", "1996-09-07")));
-            memberService.join(MemberCreateRequestToService.of(new MemberCreateRequestToController("memberG", "emailG", "1996-11-07")));
-            memberService.join(MemberCreateRequestToService.of(new MemberCreateRequestToController("memberH", "emailH", "1946-05-07")));
-            memberService.join(MemberCreateRequestToService.of(new MemberCreateRequestToController("memberI", "emailI", "1996-01-07")));
-            memberService.join(MemberCreateRequestToService.of(new MemberCreateRequestToController("memberJ", "emailJ", "1996-03-07")));
-            memberService.join(MemberCreateRequestToService.of(new MemberCreateRequestToController("memberK", "emailK", "1996-02-07")));
+            memberService.join(new MemberCreateRequestToService("memberA", "emailA", "0000","1999-09-09"));
+            memberService.join(new MemberCreateRequestToService("memberB", "emailB","0000", "1969-09-04"));
+            memberService.join(new MemberCreateRequestToService("memberC", "emailC","0000", "1989-06-09"));
+            memberService.join(new MemberCreateRequestToService("memberD", "emailD","0000", "1997-12-09"));
+            memberService.join(new MemberCreateRequestToService("memberE", "emailE","0000", "1996-04-07"));
+            memberService.join(new MemberCreateRequestToService("memberF", "emailF","0000", "1996-09-07"));
+            memberService.join(new MemberCreateRequestToService("memberG", "emailG","0000", "1996-11-07"));
+            memberService.join(new MemberCreateRequestToService("memberH", "emailH","0000", "1946-05-07"));
+            memberService.join(new MemberCreateRequestToService("memberI", "emailI","0000", "1996-01-07"));
+            memberService.join(new MemberCreateRequestToService("memberJ", "emailJ","0000", "1996-03-07"));
+            memberService.join(new MemberCreateRequestToService("memberK", "emailK","0000", "1996-02-07"));
         }
     }
 

@@ -7,19 +7,16 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
-import java.time.LocalDate;
 import java.util.Date;
 
 @Service
-public class TokenProvider {
-    private static final String SECRET_KEY = "this-is-my-super-ultra-complex-secret-key";
-    private static final Key key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(SECRET_KEY));
+public class TokenProvideService {
+    private static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS512);
 
-    public String create(Member member) {
-
+    public String create(Long memberId) {
         return Jwts.builder()
                 .signWith(key)
-                .setSubject(String.valueOf(member.getId()))
+                .setSubject(String.valueOf(memberId))
                 .setIssuer("GGOMG")
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 3600000))
@@ -29,7 +26,10 @@ public class TokenProvider {
     public String validateMember(String token){
         Claims claims = Jwts.parserBuilder()
                 .setSigningKey(key)
-                .
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
 
+        return claims.getSubject();
     }
 }
