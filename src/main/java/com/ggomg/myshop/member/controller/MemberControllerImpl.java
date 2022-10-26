@@ -44,7 +44,7 @@ public class MemberControllerImpl {
     public String signIn(@RequestBody MemberLoginRequestToController request) {
         Long memberId = memberService.login(new MemberLoginRequestToService(request.getEmail(), request.getPassword()));
         String token = tokenProvideService.create(memberId);
-        return tokenProvideService.validateMember(token);
+        return token;
     }
 
 }
