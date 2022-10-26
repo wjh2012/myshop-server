@@ -37,6 +37,10 @@
 - [ ] service
 - [ ] controller
 
-## 인증
+## 인증 (JWT)
+- [x] validateService
+- [x] TokenProvider
+- [x] securityFilter
+
 
 # 3. 배포
