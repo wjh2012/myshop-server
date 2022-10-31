@@ -25,13 +25,9 @@ public class MemberControllerImpl {
     private final TokenProvideService tokenProvideService;
 
 
-    @PostMapping("/member")
+    @PostMapping("/signup")
     public Long saveMember(@RequestBody MemberCreateRequestToController request) {
-        return memberService.join(toService(request));
-    }
-
-    private MemberCreateRequestToService toService(MemberCreateRequestToController request){
-        return new MemberCreateRequestToService(request.getName(), request.getEmail(), request.getPassword(), request.getBirth());
+        return memberService.join(new MemberCreateRequestToService(request.getName(), request.getEmail(), request.getPassword(), request.getBirth()));
     }
 
     @GetMapping("/members")

@@ -15,4 +15,6 @@ public interface PostRepository {
     List<Post> findByTitle(String title);
 
     List<Post> findAll();
+
+    List<Post> findByMember();
 }

@@ -24,6 +24,13 @@ public class PostRepositoryImpl implements PostRepository {
         return em.find(Post.class, id);
     }
 
+
+    @Override
+    public List<Post> findAll() {
+        return em.createQuery("select p from Post p", Post.class)
+                .getResultList();
+    }
+
     @Override
     public List<Post> findByTitle(String title) {
         return em.createQuery("select p from Post p where p.title =: title", Post.class)
@@ -32,8 +39,8 @@ public class PostRepositoryImpl implements PostRepository {
     }
 
     @Override
-    public List<Post> findAll() {
-        return em.createQuery("select p from Post p", Post.class)
+    public List<Post> findByMember() {
+        return em.createQuery("select p from Post p where p.member =: member", Post.class)
                 .getResultList();
     }
 }

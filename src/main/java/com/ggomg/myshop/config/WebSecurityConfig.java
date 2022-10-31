@@ -28,7 +28,7 @@ public class WebSecurityConfig {
                 .httpBasic().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .authorizeRequests().antMatchers("/", "/auth/**","/signin").permitAll()
+                .authorizeRequests().antMatchers("/", "/signup","/signin").permitAll()
                 .anyRequest().authenticated();
 
         http.addFilterAfter(
