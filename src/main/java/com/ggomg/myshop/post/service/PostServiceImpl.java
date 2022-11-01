@@ -1,15 +1,18 @@
 package com.ggomg.myshop.post.service;
 
 import com.ggomg.myshop.member.entity.Member;
+import com.ggomg.myshop.member.service.DTO.MemberListResponse;
 import com.ggomg.myshop.post.entity.Post;
 import com.ggomg.myshop.post.repository.PostRepository;
 import com.ggomg.myshop.post.service.DTO.PostCreateRequestToService;
+import com.ggomg.myshop.post.service.DTO.PostListResponse;
 import com.ggomg.myshop.post.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -35,8 +38,13 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<Post> findAllPosts() {
-        return postRepository.findAll();
+    public List<PostListResponse> findAllPosts() {
+
+        List<Post> findPosts = postRepository.findAll();
+
+        return findPosts.stream()
+                .map(PostListResponse::new)
+                .collect((Collectors.toList()));
     }
 
     @Override
