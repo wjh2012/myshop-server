@@ -57,9 +57,10 @@ public class Post {
     private Board board;
 
     @Builder
-    public Post(Board board, Category category, String title, String content){
+    public Post(Board board, Category category, Member member, String title, String content){
         this.board = board;
         this.category = category;
+        this.member = member;
         this.title = title;
         this.content = content;
     }
