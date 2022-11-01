@@ -54,11 +54,9 @@ public class MemberServiceImpl implements MemberService {
 
         List<Member> findMembers = memberRepository.findAll();
 
-        List<MemberListResponse> collect = findMembers.stream()
-                .map(m -> new MemberListResponse(m))
+        return findMembers.stream()
+                .map(MemberListResponse::new)
                 .collect((Collectors.toList()));
-
-        return collect;
     }
 
     @Override
