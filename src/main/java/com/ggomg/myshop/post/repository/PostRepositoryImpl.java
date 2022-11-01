@@ -16,6 +16,7 @@ import java.util.List;
 public class PostRepositoryImpl implements PostRepository {
 
     private final EntityManager em;
+    private final JPAQueryFactory queryFactory;
 
     @Override
     public void create(Post post) {
@@ -59,8 +60,7 @@ public class PostRepositoryImpl implements PostRepository {
     public List<Post> findByTitleOrContent(String title, String content) {
         QPost post = QPost.post;
 
-        JPAQueryFactory query = new JPAQueryFactory(em);
-        return query
+        return queryFactory
                 .selectFrom(post)
                 .where(post.title.eq(title)
                 .or(post.content.eq(content)))
