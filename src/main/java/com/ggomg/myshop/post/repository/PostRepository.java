@@ -1,6 +1,7 @@
 package com.ggomg.myshop.post.repository;
 
 
+import com.ggomg.myshop.member.entity.Member;
 import com.ggomg.myshop.post.entity.Post;
 
 import java.util.List;
@@ -16,5 +17,9 @@ public interface PostRepository {
 
     List<Post> findAll();
 
-    List<Post> findByMember();
+    List<Post> findByMember(Member member);
+
+    List<Post> findByContent(String content);
+
+    List<Post> findByTitleOrContent(String title, String content);
 }

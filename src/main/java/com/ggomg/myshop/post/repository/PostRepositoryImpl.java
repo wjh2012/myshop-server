@@ -1,7 +1,10 @@
 package com.ggomg.myshop.post.repository;
 
+import com.ggomg.myshop.member.entity.Member;
 import com.ggomg.myshop.post.entity.Post;
+import com.ggomg.myshop.post.entity.QPost;
 import com.ggomg.myshop.post.repository.PostRepository;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -32,6 +35,13 @@ public class PostRepositoryImpl implements PostRepository {
     }
 
     @Override
+    public List<Post> findByMember(Member member) {
+        return em.createQuery("select p from Post p where p.member =: member", Post.class)
+                .setParameter("member", member)
+                .getResultList();
+    }
+
+    @Override
     public List<Post> findByTitle(String title) {
         return em.createQuery("select p from Post p where p.title =: title", Post.class)
                 .setParameter("title", title)
@@ -39,8 +49,22 @@ public class PostRepositoryImpl implements PostRepository {
     }
 
     @Override
-    public List<Post> findByMember() {
-        return em.createQuery("select p from Post p where p.member =: member", Post.class)
+    public List<Post> findByContent(String content) {
+        return em.createQuery("select p from Post p where p.content =: content", Post.class)
+                .setParameter("content", content)
                 .getResultList();
     }
+
+    @Override
+    public List<Post> findByTitleOrContent(String title, String content) {
+        QPost post = QPost.post;
+
+        JPAQueryFactory query = new JPAQueryFactory(em);
+        return query
+                .selectFrom(post)
+                .where(post.title.eq(title)
+                .or(post.content.eq(content)))
+                .fetch();
+    }
+
 }
