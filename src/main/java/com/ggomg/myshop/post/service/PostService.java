@@ -12,11 +12,11 @@ public interface PostService {
 
     List<PostListResponse> findAllPosts();
 
-    List<Post> findByTitle(String title);
+    List<PostListResponse> findByTitle(String title);
 
-    List<Post> findByMember(Member member);
+    List<PostListResponse> findByMember(Member member);
 
-    List<Post> findByContent(String content);
+    List<PostListResponse> findByContent(String content);
 
-    List<Post> findByTitleOrContent(String title, String content);
+    List<PostListResponse> findByTitleOrContent(String title, String content);
 }

@@ -48,22 +48,38 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<Post> findByTitle(String title) {
-        return postRepository.findByTitle(title);
+    public List<PostListResponse> findByTitle(String title) {
+        List<Post> findPosts = postRepository.findAll();
+
+        return findPosts.stream()
+                .map(PostListResponse::new)
+                .collect((Collectors.toList()));
     }
 
     @Override
-    public List<Post> findByMember(Member member) {
-        return postRepository.findByMember(member);
+    public List<PostListResponse> findByMember(Member member) {
+        List<Post> findPosts = postRepository.findAll();
+
+        return findPosts.stream()
+                .map(PostListResponse::new)
+                .collect((Collectors.toList()));
     }
 
     @Override
-    public List<Post> findByContent(String content) {
-        return postRepository.findByContent(content);
+    public List<PostListResponse> findByContent(String content) {
+        List<Post> findPosts = postRepository.findAll();
+
+        return findPosts.stream()
+                .map(PostListResponse::new)
+                .collect((Collectors.toList()));
     }
 
     @Override
-    public List<Post> findByTitleOrContent(String title, String content) {
-        return postRepository.findByTitleOrContent(title, content);
+    public List<PostListResponse> findByTitleOrContent(String title, String content) {
+        List<Post> findPosts = postRepository.findAll();
+
+        return findPosts.stream()
+                .map(PostListResponse::new)
+                .collect((Collectors.toList()));
     }
 }
