@@ -3,13 +3,11 @@ package com.ggomg.myshop.post.repository;
 import com.ggomg.myshop.member.entity.Member;
 import com.ggomg.myshop.post.entity.Post;
 import com.ggomg.myshop.post.entity.QPost;
-import com.ggomg.myshop.post.repository.PostRepository;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import java.util.List;
+import javax.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-
-import javax.persistence.EntityManager;
-import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
@@ -63,7 +61,7 @@ public class PostRepositoryImpl implements PostRepository {
         return queryFactory
                 .selectFrom(post)
                 .where(post.title.eq(title)
-                .or(post.content.eq(content)))
+                        .or(post.content.eq(content)))
                 .fetch();
     }
 

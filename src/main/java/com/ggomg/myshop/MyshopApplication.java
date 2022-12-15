@@ -9,13 +9,13 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @EnableJpaAuditing
 public class MyshopApplication {
 
-	public static void main(String[] args) {
-		Hello hello = new Hello();
-		hello.setData("hello! spring!");
-		String data = hello.getData();
-		System.out.println("data = " + data);
+    public static void main(String[] args) {
+        Hello hello = new Hello();
+        hello.setData("hello! spring!");
+        String data = hello.getData();
+        System.out.println("data = " + data);
 
-		SpringApplication.run(MyshopApplication.class, args);
-	}
+        SpringApplication.run(MyshopApplication.class, args);
+    }
 
 }

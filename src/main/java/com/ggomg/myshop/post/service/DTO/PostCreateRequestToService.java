@@ -12,9 +12,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class PostCreateRequestToService {
-      private Board board;
-      private Category category;
-      private Member member;
-      private String title;
-      private String content;
+    private Board board;
+    private Category category;
+    private Member member;
+    private String title;
+    private String content;
 }

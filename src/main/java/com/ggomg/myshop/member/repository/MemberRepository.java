@@ -1,7 +1,6 @@
 package com.ggomg.myshop.member.repository;
 
 import com.ggomg.myshop.member.entity.Member;
-
 import java.util.List;
 
 public interface MemberRepository {

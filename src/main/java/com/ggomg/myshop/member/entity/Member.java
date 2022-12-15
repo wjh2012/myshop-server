@@ -3,18 +3,24 @@ package com.ggomg.myshop.member.entity;
 import com.ggomg.myshop.board.Board;
 import com.ggomg.myshop.post.entity.Post;
 import com.ggomg.myshop.reply.Reply;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
@@ -24,7 +30,7 @@ public class Member {
     // meta
     @Id
     @GeneratedValue
-    @Column(name="member_id")
+    @Column(name = "member_id")
     private Long id;
 
     @CreatedDate
@@ -51,7 +57,7 @@ public class Member {
     private List<Board> boards = new ArrayList<>();
 
     @Builder
-    public Member(String name, String email,String password, LocalDate birth,MemberGrade memberGrade){
+    public Member(String name, String email, String password, LocalDate birth, MemberGrade memberGrade) {
         this.name = name;
         this.email = email;
         this.password = password;

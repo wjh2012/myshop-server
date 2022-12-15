@@ -1,8 +1,20 @@
 package com.ggomg.myshop.post.entity;
 
-import com.ggomg.myshop.reply.Reply;
 import com.ggomg.myshop.board.Board;
 import com.ggomg.myshop.member.entity.Member;
+import com.ggomg.myshop.reply.Reply;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,11 +23,6 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
@@ -26,7 +33,7 @@ public class Post {
     // meta
     @Id
     @GeneratedValue
-    @Column(name="post_id")
+    @Column(name = "post_id")
     private Long Id;
 
     @CreatedDate
@@ -45,7 +52,7 @@ public class Post {
 
     // 연관속성
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="member_id")
+    @JoinColumn(name = "member_id")
     @CreatedBy
     private Member member;
 
@@ -57,7 +64,7 @@ public class Post {
     private Board board;
 
     @Builder
-    public Post(Board board, Category category, Member member, String title, String content){
+    public Post(Board board, Category category, Member member, String title, String content) {
         this.board = board;
         this.category = category;
         this.member = member;

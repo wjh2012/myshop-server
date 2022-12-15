@@ -1,8 +1,7 @@
 package com.ggomg.myshop.reply;
 
+import javax.persistence.Embeddable;
 import lombok.Getter;
-
-import javax.persistence.*;
 
 @Embeddable
 @Getter

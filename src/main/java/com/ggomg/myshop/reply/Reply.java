@@ -2,14 +2,20 @@ package com.ggomg.myshop.reply;
 
 import com.ggomg.myshop.member.entity.Member;
 import com.ggomg.myshop.post.entity.Post;
-import lombok.Getter;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-
-import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import lombok.Getter;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
 
 @Entity
 @Getter
@@ -31,12 +37,12 @@ public class Reply {
 
     // 연관속성
     @ManyToOne
-    @JoinColumn(name="member_id")
+    @JoinColumn(name = "member_id")
     @CreatedBy
     private Member member;
 
     @ManyToOne
-    @JoinColumn(name="post_id")
+    @JoinColumn(name = "post_id")
     private Post post;
 
     @Embedded
@@ -49,7 +55,6 @@ public class Reply {
 
     @OneToMany(mappedBy = "parent")
     private List<Reply> child = new ArrayList<>();
-
 
 
 }

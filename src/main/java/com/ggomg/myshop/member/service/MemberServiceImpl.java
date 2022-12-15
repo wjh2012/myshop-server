@@ -1,20 +1,18 @@
 package com.ggomg.myshop.member.service;
 
-import com.ggomg.myshop.member.controller.DTO.MemberCreateRequestToController;
 import com.ggomg.myshop.member.entity.Member;
 import com.ggomg.myshop.member.entity.MemberGrade;
 import com.ggomg.myshop.member.repository.MemberRepository;
 import com.ggomg.myshop.member.service.DTO.MemberCreateRequestToService;
 import com.ggomg.myshop.member.service.DTO.MemberListResponse;
 import com.ggomg.myshop.member.service.DTO.MemberLoginRequestToService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -35,7 +33,7 @@ public class MemberServiceImpl implements MemberService {
                 .password(request.getPassword())
                 .birth(LocalDate.parse(request.getBirth(), DateTimeFormatter.ISO_LOCAL_DATE))
                 .memberGrade(MemberGrade.NEWB)
-                        .build();
+                .build();
 
         memberRepository.create(member);
         return member.getId();
@@ -44,7 +42,7 @@ public class MemberServiceImpl implements MemberService {
     private void validateDuplicateMemberName(String name) {
 
         List<Member> foundMember = memberRepository.findByName(name);
-        if (!foundMember.isEmpty()){
+        if (!foundMember.isEmpty()) {
             throw new IllegalStateException("이미 존재하는 닉네임입니다.");
         }
     }
@@ -66,9 +64,9 @@ public class MemberServiceImpl implements MemberService {
     }
 
 
-    private List<Member> validateLoginMember(String email, String password){
+    private List<Member> validateLoginMember(String email, String password) {
         List<Member> Result = memberRepository.findByEmailAndPassword(email, password);
-        if (Result.isEmpty()){
+        if (Result.isEmpty()) {
             throw new IllegalStateException("없는 회원입니다.");
         }
         return Result;

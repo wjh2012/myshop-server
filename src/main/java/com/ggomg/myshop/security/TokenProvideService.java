@@ -1,13 +1,12 @@
 package com.ggomg.myshop.security;
 
-import com.ggomg.myshop.member.entity.Member;
-import io.jsonwebtoken.*;
-import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.stereotype.Service;
-
 import java.security.Key;
 import java.util.Date;
+import org.springframework.stereotype.Service;
 
 @Service
 public class TokenProvideService {
@@ -15,15 +14,16 @@ public class TokenProvideService {
 
     public String create(Long memberId) {
         return Jwts.builder()
+                .setHeaderParam("type", "jwt")
+                .setIssuer("myshop") // 발급자
+                .setSubject(String.valueOf(memberId)) //claim 제목
                 .signWith(key)
-                .setSubject(String.valueOf(memberId))
-                .setIssuer("GGOMG")
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 3600000))
                 .compact();
     }
 
-    public String validateMember(String token){
+    public String validateMember(String token) {
         Claims claims = Jwts.parserBuilder()
                 .setSigningKey(key)
                 .build()
