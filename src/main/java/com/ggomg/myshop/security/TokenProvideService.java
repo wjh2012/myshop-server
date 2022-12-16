@@ -1,6 +1,7 @@
 package com.ggomg.myshop.security;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -14,9 +15,9 @@ public class TokenProvideService {
 
     public String create(Long memberId) {
         return Jwts.builder()
-                .setHeaderParam("type", "jwt")
+                .setHeaderParam("typ", "JWT")
                 .setIssuer("myshop") // 발급자
-                .setSubject(String.valueOf(memberId)) //claim 제목
+                .setSubject(String.valueOf(memberId)) // 토큰 제목(주로 이메일)
                 .signWith(key)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 3600000))
@@ -24,12 +25,11 @@ public class TokenProvideService {
     }
 
     public String validateMember(String token) {
-        Claims claims = Jwts.parserBuilder()
+        return Jwts.parserBuilder()
                 .setSigningKey(key)
                 .build()
                 .parseClaimsJws(token)
-                .getBody();
-
-        return claims.getSubject();
+                .getBody()
+                .getSubject();
     }
 }
