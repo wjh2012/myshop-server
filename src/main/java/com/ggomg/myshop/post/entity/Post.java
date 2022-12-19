@@ -30,35 +30,28 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @EntityListeners(AuditingEntityListener.class)
 public class Post {
 
+    @OneToMany(mappedBy = "post")
+    private final List<Reply> replies = new ArrayList<>();
     // meta
     @Id
     @GeneratedValue
     @Column(name = "post_id")
     private Long Id;
-
     @CreatedDate
     private LocalDateTime createdDate;
-
     @LastModifiedDate
     private LocalDateTime modifiedDate;
-
     // 단일속성
     private String title;
     private String content;
-
     private Category category;
     private int good;
     private int bad;
-
     // 연관속성
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     @CreatedBy
     private Member member;
-
-    @OneToMany(mappedBy = "post")
-    private List<Reply> replies = new ArrayList<>();
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_id")
     private Board board;

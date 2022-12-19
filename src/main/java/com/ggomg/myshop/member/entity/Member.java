@@ -27,34 +27,26 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EntityListeners(AuditingEntityListener.class)
 public class Member {
+    // 연관속성
+    @OneToMany(mappedBy = "member")
+    private final List<Post> posts = new ArrayList<>();
+    @OneToMany(mappedBy = "member")
+    private final List<Reply> replies = new ArrayList<>();
+    @OneToMany(mappedBy = "member")
+    private final List<Board> boards = new ArrayList<>();
     // meta
     @Id
     @GeneratedValue
     @Column(name = "member_id")
     private Long id;
-
     @CreatedDate
     private LocalDateTime createdDate;
-
     private String name;
-
     private String email;
     private String password;
-
     private LocalDate birth;
-
     @Enumerated(EnumType.STRING)
     private MemberGrade memberGrade;
-
-    // 연관속성
-    @OneToMany(mappedBy = "member")
-    private List<Post> posts = new ArrayList<>();
-
-    @OneToMany(mappedBy = "member")
-    private List<Reply> replies = new ArrayList<>();
-
-    @OneToMany(mappedBy = "member")
-    private List<Board> boards = new ArrayList<>();
 
     @Builder
     public Member(String name, String email, String password, LocalDate birth, MemberGrade memberGrade) {

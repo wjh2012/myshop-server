@@ -6,37 +6,37 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.web.filter.CorsFilter;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
 @RequiredArgsConstructor
 @Configuration
-public class WebSecurityConfig extends WebSecurityConfiguration {
+public class WebSecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        http
-                .cors()
-                .and()
-                .csrf().disable()
-                .httpBasic().disable()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .authorizeRequests()
-                .antMatchers("/", "/signup**", "/signin/**").permitAll()
-                .anyRequest().authenticated();
-
-        http.addFilterAfter(
+        http.addFilterBefore(
                 jwtAuthenticationFilter,
-                CorsFilter.class
+                UsernamePasswordAuthenticationFilter.class
         );
+        // cors
+        http.cors();
+        // GET 요청을 제외한 POST, PUT, DELETE 요청은 csrf토큰이 있어야 가능
+        http.csrf().disable();
+        // 팝업로그인
+        http.httpBasic().disable();
+        // 인증정보를 서버에 담아두지 않는다
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        // 경로별 설정
+        http.authorizeRequests()
+                .antMatchers("/", "/signup", "/signin").permitAll();
+        http.authorizeRequests()
+                .anyRequest().authenticated();
 
         return http.build();
     }
