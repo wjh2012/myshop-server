@@ -1,7 +1,7 @@
 package com.ggomg.myshop;
 
-import com.ggomg.myshop.member.service.DTO.MemberCreateRequestToService;
-import com.ggomg.myshop.member.service.MemberService;
+import com.ggomg.myshop.domain.member.service.DTO.MemberCreateRequestToService;
+import com.ggomg.myshop.domain.member.service.MemberService;
 import javax.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

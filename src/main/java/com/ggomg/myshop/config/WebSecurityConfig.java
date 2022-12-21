@@ -10,9 +10,10 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-@EnableWebSecurity
+
 @RequiredArgsConstructor
 @Configuration
+@EnableWebSecurity // 필터체인 등록
 public class WebSecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
@@ -24,6 +25,7 @@ public class WebSecurityConfig {
                 jwtAuthenticationFilter,
                 UsernamePasswordAuthenticationFilter.class
         );
+
         // cors
         http.cors();
         // GET 요청을 제외한 POST, PUT, DELETE 요청은 csrf토큰이 있어야 가능
