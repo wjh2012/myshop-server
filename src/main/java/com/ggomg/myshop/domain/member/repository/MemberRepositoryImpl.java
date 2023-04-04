@@ -1,7 +1,7 @@
 package com.ggomg.myshop.domain.member.repository;
 
 import com.ggomg.myshop.domain.member.entity.Member;
-import com.ggomg.myshop.member.entity.QMember;
+import com.ggomg.myshop.domain.member.entity.QMember;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import java.util.List;
 import javax.persistence.EntityManager;

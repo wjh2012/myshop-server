@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
 @RequiredArgsConstructor
@@ -20,7 +21,6 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
         http.addFilterBefore(
                 jwtAuthenticationFilter,
                 FilterSecurityInterceptor.class
@@ -32,7 +32,7 @@ public class WebSecurityConfig {
         http.csrf().disable();
         // 팝업로그인
         http.httpBasic().disable();
-        // 인증정보를 서버에 담아두지 않는다
+        // 인증정보를 세션을 만들지 않는다
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         // 경로별 설정
         http.authorizeRequests()
