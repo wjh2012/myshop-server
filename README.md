@@ -1,10 +1,6 @@
 # 개인 프로젝트 백엔드
 프론트 = https://github.com/wjh2012/myshop_front
 
-# ISSUE
-1. 멤버 인증 방법 - JWT가 아닌 다른 인증 방법
-2. 성능을 고려한 member와 post의 결합도
-
 # 1. 기획
 - [x] 엔티티 설계
 - [x] 엔티티 관계 설정
